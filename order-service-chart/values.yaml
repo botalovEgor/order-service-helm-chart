@@ -1,0 +1,40 @@
+image:
+  names:
+    app: megastroy/order-service:1.0.0
+    liquibase: megastroy/liquibase:1.0.0
+    postgres: postgres:12
+
+replicas:
+  app: 3
+  postgres: 1
+
+configmaps:
+  db: db-config
+  app: app-config
+secrets:
+  db: db-secrets
+
+db:
+  driver_class_name: org.postgresql.Driver
+  name: postgres
+  user: postgres
+  password: 1
+
+ports:
+  app:
+    name: app-port
+    number: 8000
+  postgres:
+    name: db-port
+    number: 5432
+
+app:
+  name: order-app
+
+ingress:
+  host: ru.megastroy
+
+metrics:
+  app:
+    interval: 15s
+    path: /actuator/prometheus
