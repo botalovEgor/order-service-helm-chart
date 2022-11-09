@@ -30,6 +30,12 @@ ports:
 
 app:
   name: order-app
+  auth:
+    basic:
+      storageLogin: order
+      storagePassword: order
+      deliveryLogin: order
+      deliveryPassword: order
 
 ingress:
   host: ru.megastroy
@@ -37,4 +43,4 @@ ingress:
 metrics:
   app:
     interval: 15s
-    path: /actuator/prometheus
+    path: /actuator/prometheus  
